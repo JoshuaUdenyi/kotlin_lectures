@@ -1,3 +1,4 @@
+import java.util.Arrays
 
 fun main(){
     val namesOfStudentInSpaceAi = mutableListOf(
@@ -70,4 +71,10 @@ fun main(){
     for (i in 3..6 step 2){
         println(i)
     }
+
+    val arrayRepresentation = arrayOf(
+        1,2,3,4,5,6
+    )
+
+    print(Arrays.toString(arrayRepresentation))
 }
