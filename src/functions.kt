@@ -9,6 +9,9 @@ fun main(args: Array<String>) {
 //    println(message)
 
     feedTheFish()
+//    swim(10,"fast") // Positional Argument
+//    swim(speed = "turtle-like") // named parameter
+//    swim() // uses default speed value
 
 }
 
@@ -32,13 +35,7 @@ fun main(args: Array<String>) {
 
 fun randomDay(): String {
     val week = arrayOf(
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday"
+        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
     )
 
     return week[Random().nextInt(week.size)]
@@ -46,11 +43,11 @@ fun randomDay(): String {
 
 fun fishFood(day: String): String {
 
-   return when (day) {
+    return when (day) {
         "Monday" -> "flakes"
-        "Tuesday" ->  "pellets"
+        "Tuesday" -> "pellets"
         "Wednesday" -> "redworms"
-        "Thursday" ->  "granules"
+        "Thursday" -> "granules"
         "Friday" -> "mosquitoes"
         "Saturday" -> "lettuce"
         "Sunday" -> "plankton"
@@ -63,4 +60,22 @@ fun feedTheFish() {
     val day = randomDay()
     val food = fishFood(day)
     println("Today is $day and the fish eat $food")
+    println("Change water: ${shouldChangeWater(day)}")
 }
+//Today class
+fun swim(slowDown: Int = 4,speed: String = "fast") {
+    println(speed)
+}
+
+fun shouldChangeWater(day: String, temperature:Int = 22, dirtyLevelOfWater: Int = 4): Boolean{
+    return when {
+        isTooHot(temperature) -> true
+        isDirty(dirtyLevelOfWater) -> true
+        isSunday(day)-> true
+        else -> false
+    }
+}
+
+fun isTooHot(temperature: Int) = temperature > 30
+fun isDirty(dirtyLevelOfWater: Int) = dirtyLevelOfWater > 30
+fun isSunday(day: String) = day == "Sunday"
